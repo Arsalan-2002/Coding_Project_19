@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Gallery.css';
 
 function Gallery() {
   const [tours, setTours] = useState([]);
@@ -6,7 +7,6 @@ function Gallery() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch tour data from the API
     fetch('https://course-api.com/react-tours-project')
       .then((response) => {
         if (!response.ok) {
@@ -37,20 +37,20 @@ function Gallery() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="error">Error: {error}</div>;
   }
 
   return (
-    <div>
+    <div className="gallery-container">
       {tours.length === 0 ? (
-        <p>No tours available</p>
+        <p className="no-tours">No tours available</p>
       ) : (
         tours.map((tour) => (
-          <div key={tour.id}>
+          <div className="tour-card" key={tour.id}>
             <h2>{tour.name}</h2>
             <p>
               {tour.readMore ? tour.info : `${tour.info.substring(0, 200)}...`}
