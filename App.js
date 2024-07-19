@@ -1,4 +1,4 @@
-// src/App.js
+// U32196076
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Gallery from './components/Gallery';
